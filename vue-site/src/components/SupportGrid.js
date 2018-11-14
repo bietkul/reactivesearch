@@ -14,7 +14,7 @@ export default () => (
 		}}
 	>
 		<Card big href="https://opensource.appbase.io/reactive-manual">
-			<img src="/images/support/Documentation.svg" alt="Documentation" />
+			<img srcSet="/images/Documentation@3x.svg 3x, /images/Documentation@2x.png 2x, /images/Documentation.png" alt="Documentation" />
 			<Title>Documentation</Title>
 			<p>
 				Dive in to learn all about{' '}
@@ -29,14 +29,13 @@ export default () => (
 			</p>
 		</Card>
 		<Card big href="https://medium.appbase.io">
-			<img src="/images/support/Tutorials.svg" alt="Tutorials" />
+			<img srcSet="/images/Tutorials@3x.svg 3x, /images/Tutorials@2x.png 2x, /images/Tutorials.png" alt="Tutorials" />
 			<Title>Tutorials</Title>
 			<p>Go from scratch to a full app with these tutorial guides.</p>
 		</Card>
 		<Card big href="https://appbase.io/support">
 			<img
-				src="/images/support/Support.png"
-				srcSet="/images/support/Support@2x.png 2x"
+				srcSet="/images/Support@3x.svg 3x, /images/Support@2x.png 2x, /images/Support.png"
 				alt="Support"
 			/>
 			<Title>Support</Title>
@@ -53,7 +52,7 @@ export default () => (
 			</p>
 		</Card>
 		<Card big href="https://gitter.im/appbaseio/reactivesearch">
-			<img src="/images/support/Gitter.svg" alt="Gitter" />
+			<img srcSet="/images/Gitter@3x.svg 3x, /images/Gitter@2x.png 2x, /images/Gitter.png" alt="Gitter" />
 			<Title>Gitter</Title>
 			<p>
 				Join our community on Gitter. We

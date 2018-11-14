@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { css } from 'emotion';
 import { ThemeProvider } from 'emotion-theming';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -16,6 +17,13 @@ import {
 import SupportGrid from '../components/SupportGrid';
 import BannerRow from '../components/BannerRow';
 import Footer from '../components/Footer';
+import queries from '../styles/mediaQueries';
+
+const navTitle = css`
+	${queries.small`
+		font-size: 16px;
+	`};
+`;
 
 const title = {
 	marginTop: '10px',
@@ -36,12 +44,15 @@ class Learn extends Component {
 				<Base>
 					<Navbar bold>
 						<Navbar.Logo>
-							<Logo href={config.header.logo.href}>
+							<Logo css={navTitle} href={config.header.logo.href}>
 								<Logo.Icon css="color: #fff;">
 									<img src={config.header.logo.src} alt="Icon" />
 								</Logo.Icon>
 								<Logo.Light>{config.header.logo.title.light}</Logo.Light>
 								<Logo.Dark>{config.header.logo.title.dark}</Logo.Dark>
+								<span css="margin-left: 7px !important">
+									<Logo.Light>{config.header.logo.title.description}</Logo.Light>
+								</span>
 							</Logo>
 						</Navbar.Logo>
 						<Navbar.List>

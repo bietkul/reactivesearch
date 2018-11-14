@@ -1,11 +1,14 @@
 import React from 'react';
+import theme from '../constants/theme/web';
 import { Footer, Title } from '@appbaseio/designkit';
 
 const titleStyle = {
 	margin: '0.9rem 0px',
+	color: '#ffffff',
+	opacity: 0.5,
 };
 export default () => (
-	<Footer>
+	<Footer style={{ backgroundColor: theme.primaryDark }}>
 		<Footer.Brand>
 			<img
 				width="100%"
@@ -18,45 +21,40 @@ export default () => (
 				<Title style={titleStyle}>Documentation</Title>
 				<li>
 					<a
+						style={{ color: '#FFFFFF' }}
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://opensource.appbase.io/reactive-manual/getting-started/reactivesearch.html"
+						href="https://opensource.appbase.io/reactive-manual/vue/getting-started/reactivesearch.html"
 					>
 						Quick Start Guide
 					</a>
 				</li>
 				<li>
 					<a
+						style={{ color: '#FFFFFF' }}
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://opensource.appbase.io/reactive-manual/base-components/textfield.html"
+						href="https://opensource.appbase.io/reactive-manual/vue/base-components/selectedfilters.html"
 					>
 						Base Components
 					</a>
 				</li>
 				<li>
 					<a
+						style={{ color: '#FFFFFF' }}
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://opensource.appbase.io/reactive-manual/map-components/geodistanceslider.html"
-					>
-						Map Components
-					</a>
-				</li>
-				<li>
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://opensource.appbase.io/reactive-manual/search-components/datasearch.html"
+						href="https://opensource.appbase.io/reactive-manual/vue/search-components/datasearch.html"
 					>
 						Search Components
 					</a>
 				</li>
 				<li>
 					<a
+						style={{ color: '#FFFFFF' }}
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://opensource.appbase.io/reactive-manual/result-components/resultlist.html"
+						href="https://opensource.appbase.io/reactive-manual/vue/result-components/reactivelist.html"
 					>
 						Result Components
 					</a>
@@ -67,6 +65,7 @@ export default () => (
 				<Title style={titleStyle}>Community</Title>
 				<li>
 					<a
+						style={{ color: '#FFFFFF' }}
 						target="_blank"
 						rel="noopener noreferrer"
 						href="https://github.com/appbaseio/reactivesearch/"
@@ -76,6 +75,7 @@ export default () => (
 				</li>
 				<li>
 					<a
+						style={{ color: '#FFFFFF' }}
 						target="_blank"
 						rel="noopener noreferrer"
 						href="https://gitter.im/appbaseio/reactivesearch"
@@ -85,6 +85,7 @@ export default () => (
 				</li>
 				<li>
 					<a
+						style={{ color: '#FFFFFF' }}
 						target="_blank"
 						rel="noopener noreferrer"
 						href="https://stackoverflow.com/questions/tagged/reactivesearch"
@@ -93,7 +94,7 @@ export default () => (
 					</a>
 				</li>
 				<li>
-					<a target="_blank" rel="noopener noreferrer" href="https://twitter.com/appbaseio">
+					<a style={{ color: '#FFFFFF' }} target="_blank" rel="noopener noreferrer" href="https://twitter.com/appbaseio">
 						Twitter
 					</a>
 				</li>
@@ -102,12 +103,12 @@ export default () => (
 			<Footer.List>
 				<Title style={titleStyle}>Helpful Tools</Title>
 				<li>
-					<a target="_blank" rel="noopener noreferrer" href="https://opensource.appbase.io/dejavu/">
+					<a style={{ color: '#FFFFFF' }} target="_blank" rel="noopener noreferrer" href="https://opensource.appbase.io/dejavu/">
 						Data Browser
 					</a>
 				</li>
 				<li>
-					<a target="_blank" rel="noopener noreferrer" href="https://opensource.appbase.io/mirage/">
+					<a style={{ color: '#FFFFFF' }} target="_blank" rel="noopener noreferrer" href="https://opensource.appbase.io/mirage/">
 						GUI Query Builder
 					</a>
 				</li>
@@ -118,17 +119,17 @@ export default () => (
 					More
 				</Title>
 				<li>
-					<a target="_blank" rel="noopener noreferrer" href="https://medium.appbase.io/">
+					<a style={{ color: '#FFFFFF' }} target="_blank" rel="noopener noreferrer" href="https://medium.appbase.io/">
 						Medium Publication
 					</a>
 				</li>
 				<li>
-					<a target="_blank" rel="noopener noreferrer" href="http://docs.appbase.io/">
+					<a style={{ color: '#FFFFFF' }} target="_blank" rel="noopener noreferrer" href="http://docs.appbase.io/">
 						Appbase.io Docs
 					</a>
 				</li>
 				<li>
-					<a target="_blank" rel="noopener noreferrer" href="mailto:support@appbase.io">
+					<a style={{ color: '#FFFFFF' }} target="_blank" rel="noopener noreferrer" href="mailto:support@appbase.io">
 						Support Email
 					</a>
 				</li>

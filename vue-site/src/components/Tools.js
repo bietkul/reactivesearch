@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { Link } from 'react-router-dom';
+import { css } from 'emotion';
 import { Navbar, Logo, Button, H1, H2, GithubButton, Grid } from '@appbaseio/designkit';
 import PropTypes from 'prop-types';
 import {
@@ -20,11 +21,18 @@ import {
 	showMobileFlex,
 } from '../styles';
 import Footer from '../components/Footer';
+import queries from '../styles/mediaQueries';
 
+const navTitle = css`
+	${queries.small`
+		font-size: 16px;
+	`};
+`;
 const button = {
 	fontSize: '14px',
 	lineHeight: '19px',
 	fontWeight: 'bold',
+	color: '#000',
 };
 class Tools extends Component {
 	constructor(props) {
@@ -54,24 +62,28 @@ class Tools extends Component {
 		return (
 			<ThemeProvider theme={this.props.theme}>
 				<Base>
-					<Navbar style={{ backgroundColor: primaryDark, color: '#fff' }} bold dark>
+				<Navbar style={{ backgroundColor: primaryDark, color: '#fff' }} bold dark>
 						<Navbar.Logo>
-							<Logo light href={config.header.logo.href}>
+							<Logo css={navTitle} light href={config.header.logo.href}>
 								<Logo.Icon css="color: #fff;">
 									<img src={config.header.logo.src} alt="Icon" />
 								</Logo.Icon>
 								<Logo.Light>{config.header.logo.title.light}</Logo.Light>
 								<Logo.Dark>{config.header.logo.title.dark}</Logo.Dark>
+								<span css="margin-left: 7px !important">
+									<Logo.Light>{config.header.logo.title.description}</Logo.Light>
+								</span>
 							</Logo>
 						</Navbar.Logo>
 						<Navbar.List>
-							{config.header.links.map((l, i) => (
+						{config.header.links.map((l, i) => (
 								<li
 									className={
 										l.href === '/tools' || l.href === '/native/tools' ? 'active' : undefined
 									}
 									/* eslint-disable-next-line */
 									key={i}
+									style={{ opacity: 0.7 }}
 								>
 									{/* eslint-disable-next-line */}
 									<Link to={l.href}>{l.description.toUpperCase()}</Link>
@@ -82,7 +94,8 @@ class Tools extends Component {
 							</li>
 							<li className="button">
 								<Button
-									style={{ backgroundColor: secondary, ...button }}
+									primary
+									style={{ backgroundColor: '#324754', opacity: 0.7 }}
 									href={config.urls.support}
 									bold
 									uppercase
@@ -91,7 +104,7 @@ class Tools extends Component {
 								</Button>
 							</li>
 						</Navbar.List>
-					</Navbar>
+				</Navbar>
 					<Section
 						style={{
 							backgroundColor: config.banner1.backgroundColor,
@@ -194,7 +207,6 @@ class Tools extends Component {
 											bold
 											uppercase
 											big
-											primary
 											style={{
 												backgroundColor: secondary,
 												...button,
@@ -307,7 +319,6 @@ class Tools extends Component {
 											bold
 											uppercase
 											big
-											primary
 											style={{
 												backgroundColor: secondary,
 												...button,
@@ -395,7 +406,6 @@ class Tools extends Component {
 											bold
 											uppercase
 											big
-											primary
 											style={{
 												backgroundColor: secondary,
 												...button,
@@ -485,13 +495,6 @@ class Tools extends Component {
 											...button,
 										}}
 									>
-										<img
-											src="/images/support.svg"
-											style={{
-												marginRight: 10,
-											}}
-											alt="support"
-										/>
 										SUPPORT PLANS
 									</Button>
 								</div>

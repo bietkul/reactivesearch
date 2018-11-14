@@ -5,13 +5,12 @@ import {
 	Button,
 	H1,
 	H2,
-	H3,
 	Title,
-	Flex,
-	Text,
 	GithubButton,
+	// Flex,
 	Grid,
 } from '@appbaseio/designkit';
+import { css } from 'emotion';
 import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
 import {
@@ -21,29 +20,33 @@ import {
 	SecondaryLink,
 	Row,
 	Section,
-	titleRow,
+	// titleRow,
 	vcenter,
 	hideMobile,
 	showMobile,
 	showMobileFlex,
 } from '../styles';
 import ActionCard from '../styles/ActionCard';
-import ImageCard from '../styles/ImageCard';
+// import ImageCard from '../styles/ImageCard';
 import BannerRow from '../components/BannerRow';
 import Footer from '../components/Footer';
 import Testimonials from '../components/Testimonials';
 import SupportGrid from '../components/SupportGrid';
-import { code } from '../styles/base';
-import { mockDataSearch, mockDataSearchFull } from '../components/mock';
+import queries from '../styles/mediaQueries';
 
-function isScrolledIntoView(el) {
-	const rect = el.getBoundingClientRect();
-	const Ti = rect.top;
-	const elemBottom = rect.bottom;
+// function isScrolledIntoView(el) {
+// 	const rect = el.getBoundingClientRect();
+// 	const Ti = rect.top;
+// 	const elemBottom = rect.bottom;
 
-	const isVisible = Ti <= window.innerHeight / 2 && elemBottom >= 0;
-	return { isVisible, Ti };
-}
+// 	const isVisible = Ti <= window.innerHeight / 2 && elemBottom >= 0;
+// 	return { isVisible, Ti };
+// }
+const navTitle = css`
+	${queries.small`
+		font-size: 16px;
+	`};
+`;
 const button = {
 	fontSize: '14px',
 	lineHeight: '19px',
@@ -54,13 +57,12 @@ class HomePage extends Component {
 		super(props);
 
 		this.state = {
-			origin: 0,
 			githubStarCount: undefined,
 		};
 	}
 
 	componentDidMount() {
-		const el = document.getElementById('code');
+		// const el = document.getElementById('code');
 		// To fetch reactive search github stars
 		fetch('https://api.github.com/repos/appbaseio/reactivesearch')
 			.then(res => res.json())
@@ -71,25 +73,25 @@ class HomePage extends Component {
 			})
 			.catch(e => console.log(e));
 
-		window.addEventListener('scroll', () => {
-			const { isVisible, Ti } = isScrolledIntoView(el);
+		// window.addEventListener('scroll', () => {
+		// 	const { isVisible, Ti } = isScrolledIntoView(el);
 
-			const L = 1850;
-			const K = 500;
-			const Tc = window.innerHeight / 2;
-			const delta = Tc - Ti;
-			const scroll = Math.min((delta * L) / K, L - K);
+		// 	const L = 1850;
+		// 	const K = 500;
+		// 	const Tc = window.innerHeight / 2;
+		// 	const delta = Tc - Ti;
+		// 	const scroll = Math.min((delta * L) / K, L - K);
 
-			if (isVisible) {
-				this.setState({
-					origin: scroll * -1,
-				});
-			} else if (Tc < Ti) {
-				this.setState({
-					origin: 0,
-				});
-			}
-		});
+		// 	if (isVisible) {
+		// 		this.setState({
+		// 			origin: scroll * -1,
+		// 		});
+		// 	} else if (Tc < Ti) {
+		// 		this.setState({
+		// 			origin: 0,
+		// 		});
+		// 	}
+		// });
 
 		window.scrollTo(0, 0);
 	}
@@ -104,14 +106,14 @@ class HomePage extends Component {
 				<Base>
 					<Navbar style={{ backgroundColor: primary, color: '#fff' }} bold dark>
 						<Navbar.Logo>
-							<Logo light href={config.header.logo.href}>
+							<Logo css={navTitle} light href={config.header.logo.href}>
 								<Logo.Icon css="color: #fff;">
 									<img src={config.header.logo.src} alt="Icon" />
 								</Logo.Icon>
 								<Logo.Light>{config.header.logo.title.light}</Logo.Light>
 								<Logo.Dark>{config.header.logo.title.dark}</Logo.Dark>
 								<span css="margin-left: 7px !important">
-									<Logo.Light >{config.header.logo.title.description}</Logo.Light>
+									<Logo.Light>{config.header.logo.title.description}</Logo.Light>
 								</span>
 							</Logo>
 						</Navbar.Logo>
@@ -120,7 +122,7 @@ class HomePage extends Component {
 								/* eslint-disable-next-line */
 								<li key={i}>
 									{/* eslint-disable-next-line */}
-									<a href={l.href}>{l.description.toUpperCase()}</a>
+									<a style={{ opacity: 0.7 }} href={l.href}>{l.description.toUpperCase()}</a>
 								</li>
 							))}
 							<li className={showMobileFlex}>
@@ -164,7 +166,7 @@ class HomePage extends Component {
 							<div className="bg-image" />
 						</Layout>
 					</div>
-					<Row style={{ backgroundColor: '#FEFEFE', marginTop: '50px' }}>
+					<Row style={{ backgroundColor: '#F2F2F2', paddingTop: '50px' }}>
 						<Layout>
 							<div className={hideMobile}>
 								<img src={config.banner2.image.src} width="100%" alt={config.banner2.image.alt} />
@@ -203,13 +205,15 @@ class HomePage extends Component {
 										{config.banner2.link.title}
 									</SecondaryLink>
 								</div>
-								<p>
-									Get <a href={config.banner2.sketch.href}>our designer templates</a> for sketch.
-								</p>
+								{config.banner2.sketch && (
+									<p>
+										Get <a href={config.banner2.sketch.href}>our designer templates</a> for sketch.
+									</p>
+								)}
 							</div>
 						</Layout>
 					</Row>
-					<Section>
+					<Section style={{ backgroundColor: '#E8E9EA' }}>
 						<Layout>
 							<H2>{config.banner3.title}</H2>
 							<p>{config.banner3.description}</p>
@@ -224,7 +228,7 @@ class HomePage extends Component {
 									// eslint-disable-next-line
 									<ActionCard key={i}>
 										<ActionCard.Icon>
-											<img src={cardI.image.src} alt={cardI.image.alt} />
+											<img style={{ maxHeight: 40 }} src={cardI.image.src} alt={cardI.image.alt} />
 										</ActionCard.Icon>
 										<Title>{cardI.title}</Title>
 										<p>{cardI.description}</p>
@@ -242,7 +246,7 @@ class HomePage extends Component {
 							</Grid>
 						</Layout>
 					</Section>
-					<Flex
+					{/* <Flex
 						padding="3rem 3rem 1rem"
 						flexDirection="column"
 						justifyContent="center"
@@ -273,9 +277,9 @@ class HomePage extends Component {
 								<div dangerouslySetInnerHTML={{ __html: mockDataSearch }} />
 							</Flex>
 						</Flex>
-					</Flex>
+					</Flex> */}
 					<BannerRow config={config.banner5} theme={this.props.theme} />
-					<Section id="examples">
+					{/* <Section style={{ backgroundColor: '#E8E9EA' }} id="examples">
 						<Layout>
 							<div className={titleRow}>
 								<H3>{config.banner6.title}</H3>
@@ -320,14 +324,14 @@ class HomePage extends Component {
 								))}
 							</Grid>
 						</Layout>
-					</Section>
+					</Section> */}
 					<Section style={{ backgroundColor: '#fff' }}>
 						<Layout>
 							<H2>See what our users say</H2>
 							<Testimonials />
 						</Layout>
 					</Section>
-					<Section>
+					<Section style={{ backgroundColor: '#E8E9EA' }}>
 						<Layout>
 							<H2>Get started in minutes</H2>
 							<Button
