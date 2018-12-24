@@ -103,7 +103,8 @@ class HomePage extends Component {
 									<Link style={getLinkStyle(config.name)} to={l.href}>
 										{l.description.toUpperCase()}
 									</Link>
-									{/* <a style={getLinkStyle(config.name)} href={l.href}>{l.description.toUpperCase()}</a> */}
+									{/* <a style={getLinkStyle(config.name)}
+								     href={l.href}>{l.description.toUpperCase()}</a> */}
 								</li>
 							))}
 							<li className={showMobileFlex}>
@@ -365,26 +366,31 @@ class HomePage extends Component {
 										smGutter="0px"
 										style={{ marginBottom: '50px' }}
 									>
-										{config.banner6.demos.map((d, index) => (
-											// eslint-disable-next-line
-											<ImageCard key={index} src={d.src}>
-												<div>
-													<Title>{d.title}</Title>
-													<p>{d.description}</p>
-												</div>
-												<div>
-													<SecondaryLink
-														primary
-														href={d.href}
-														style={{
-															color: primary,
-														}}
-													>
-														Check Demo
-													</SecondaryLink>
-												</div>
-											</ImageCard>
-										))}
+										{config.banner6.demos.map((
+											d,
+											index, // eslint-disable-line
+										) =>
+											(Object.keys(d).length ? ( // eslint-disable-next-line
+												<ImageCard key={index} src={d.src}>
+													<div>
+														<Title>{d.title}</Title>
+														<p>{d.description}</p>
+													</div>
+													<div>
+														<SecondaryLink
+															primary
+															href={d.href}
+															style={{
+																color: primary,
+															}}
+														>
+															Check Demo
+														</SecondaryLink>
+													</div>
+												</ImageCard>
+											) : (
+												<div />
+											)))}
 									</Grid>
 								)}
 							</Layout>

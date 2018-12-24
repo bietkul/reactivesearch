@@ -171,6 +171,7 @@ export default {
 				href: 'https://9167mmkqlo.codesandbox.io/',
 				description: 'An e-commerce search experience for a books dataset.',
 			},
+			{},
 		],
 	},
 	banner7: {
